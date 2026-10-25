@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import api from "../services/api";
+import api from "../../services/api";
 
 function CalculoPF() {
   const [renda, setRenda] = useState("");

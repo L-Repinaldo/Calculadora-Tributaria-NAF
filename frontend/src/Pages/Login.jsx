@@ -54,8 +54,10 @@ export default function Login() {
   };
 
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen bg-naf-light p-4"
+    <main
+      id="conteudo"
+      tabIndex={-1}
+      className="flex flex-col items-center justify-center min-h-screen bg-naf-light p-4 outline-none"
     >
       <h1
         className={`text-3xl font-bold text-center mb-6 text-naf-blue transition-all duration-[700ms] ease-out delay-[200ms]
@@ -82,11 +84,13 @@ export default function Login() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
-            <label className="block mb-2 text-sm font-medium text-naf-blue">
+            <label htmlFor="login-email" className="block mb-2 text-sm font-medium text-naf-blue">
               Email
             </label>
             <input
               type="email"
+              id="login-email"
+              autoComplete="email"
               placeholder="Digite seu email"
               value={email}
               onChange={(e) => {
@@ -98,13 +102,13 @@ export default function Login() {
                   }
                 }
               }}
+              aria-invalid={errors.email ? "true" : undefined}
+              aria-describedby={errors.email ? "erro-email" : undefined}
               className="w-full px-4 py-2 border border-naf-gray rounded-xl focus:ring-2 focus:ring-naf-red focus:border-transparent outline-none transition delay-[80ms] duration-[400ms] ease-in-out hover:-translate-y-1 hover:shadow-md"
             />
-            <div>
-              <p className="mt-1 text-sm text-naf-red font-medium">
-                {errors.email || " "}
-              </p>
-            </div>
+            <p id="erro-email" role="alert" className="mt-1 text-sm text-naf-red-dark font-medium">
+              {errors.email || " "}
+            </p>
           </div>
 
           <div
@@ -112,7 +116,7 @@ export default function Login() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
-            <label className="block mb-2 text-sm font-medium text-naf-blue">
+            <label htmlFor="login-password" className="block mb-2 text-sm font-medium text-naf-blue">
               Senha
             </label>
             <input
@@ -120,13 +124,15 @@ export default function Login() {
               placeholder="Digite sua senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              id="login-password"
+              autoComplete="current-password"
+              aria-invalid={errors.password ? "true" : undefined}
+              aria-describedby={errors.password ? "erro-password" : undefined}
               className="w-full px-4 py-2 border border-naf-gray rounded-xl focus:ring-2 focus:ring-naf-red focus:border-transparent outline-none transition delay-[80ms] duration-[400ms] ease-in-out hover:-translate-y-1 hover:shadow-md"
             />
-            {errors.password && (
-              <p className="mt-1 text-sm text-naf-red font-medium">
-                {errors.password}
-              </p>
-            )}
+            <p id="erro-password" role="alert" className="mt-1 text-sm text-naf-red-dark font-medium">
+              {errors.password}
+            </p>
           </div>
 
           <div
@@ -165,13 +171,6 @@ export default function Login() {
           </a>
         </p>
       </div>
-
-      <h2
-        className={`block mb-2 mt-6 text-sm font-medium text-naf-gray p-1 transition-all duration-[700ms] ease-out delay-[1350ms] ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
-      </h2>
-    </div>
+    </main>
   );
 }

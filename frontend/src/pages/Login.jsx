@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [erroGeral, setErroGeral] = useState("");
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -29,6 +30,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErroGeral("");
     const formErrors = validateForm();
 
     if (Object.keys(formErrors).length > 0) {
@@ -49,7 +51,7 @@ export default function Login() {
 
     } catch (error) {
       const mensagemErro = error.response?.data?.error || "Erro ao conectar ao servidor.";
-      alert(mensagemErro);
+      setErroGeral(mensagemErro);
     }
   };
 
@@ -77,6 +79,12 @@ export default function Login() {
         >
           Login
         </h2>
+
+        <div role="alert">
+          {erroGeral && (
+            <p className="mb-4 text-sm font-medium text-naf-red-dark">{erroGeral}</p>
+          )}
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           <div
@@ -150,25 +158,25 @@ export default function Login() {
         </form>
 
         <p
-          className={`text-center text-sm text-naf-gray mt-6 transition-all duration-[700ms] ease-out delay-[1150ms] ${
+          className={`text-center text-sm text-naf-muted mt-6 transition-all duration-[700ms] ease-out delay-[1150ms] ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
           Não tem conta?{" "}
-          <a href="/Cadastro" className="text-naf-red hover:underline font-bold">
+          <Link to="/cadastro" className="text-naf-red-dark underline font-bold">
             Cadastre-se
-          </a>
+          </Link>
         </p>
 
         <p
-          className={`text-center text-sm text-naf-gray mt-2 transition-all duration-[700ms] ease-out delay-[1250ms] ${
+          className={`text-center text-sm text-naf-muted mt-2 transition-all duration-[700ms] ease-out delay-[1250ms] ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
           Esqueceu a senha?{" "}
-          <a href="/RecuperarSenha" className="text-naf-red hover:underline font-bold">
+          <Link to="/RecuperarSenha" className="text-naf-red-dark underline font-bold">
             Recuperar Senha
-          </a>
+          </Link>
         </p>
       </div>
     </main>

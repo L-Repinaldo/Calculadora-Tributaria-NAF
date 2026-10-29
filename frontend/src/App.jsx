@@ -1,25 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./Pages/Landing";
-import Login from "./Pages/Login";
-import Cadastro from "./Pages/Cadastro";
-import RecuperarSenha from "./Pages/RecuperarSenha";
-import Home from "./Pages/Home";
-import CalculoPF from "./Pages/CalculoPF";
-import CalculoPJ from "./Pages/CalculoPJ";
-import Comparativo from "./Pages/Comparativo";
-import Historico from "./Pages/Historico";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Cadastro from "./pages/Cadastro";
+import RecuperarSenha from "./pages/RecuperarSenha";
+import Home from "./pages/Home";
+import CalculoPF from "./components/Calculos/CalculoPF";
+import CalculoPJ from "./components/Calculos/CalculoPJ";
+import Comparativo from "./pages/Comparativo";
+import Historico from "./pages/Historico";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rotas Públicas */}
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
-
-        {/* Rotas Logadas */}
         <Route path="/Home" element={<Home />} />
         <Route path="/calculo-pf" element={<CalculoPF />} />
         <Route path="/calculo-pj" element={<CalculoPJ />} />

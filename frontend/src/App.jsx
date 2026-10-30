@@ -8,10 +8,15 @@ import CalculoPF from "./Pages/CalculoPF";
 import CalculoPJ from "./Pages/CalculoPJ";
 import Comparativo from "./Pages/Comparativo";
 import Historico from "./Pages/Historico";
+import Navbar from "./components/Navbar";
+import Faq from "./Pages/Faq";
+import Sobre from "./Pages/Sobre";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         {/* Rotas Públicas */}
         <Route path="/" element={<Landing />} />
@@ -25,6 +30,9 @@ function App() {
         <Route path="/calculo-pj" element={<CalculoPJ />} />
         <Route path="/comparativo" element={<Comparativo />} />
         <Route path="/historico" element={<Historico />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import html2pdf from "html2pdf.js";
@@ -26,6 +25,7 @@ export default function Comparativo() {
   useEffect(() => {
     if (!token) {
       navigate("/");
+      return;
     }
   }, [token, navigate]);
 
@@ -137,7 +137,6 @@ export default function Comparativo() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#EFEFEF]">
-      <Navbar />
       
       <main className="flex-grow flex flex-col items-center py-10 px-4">
         {/* CABEÇALHO DA PÁGINA */}

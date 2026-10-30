@@ -61,7 +61,11 @@ export default function Cadastro() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-naf-light p-4">
+    <main
+      id="conteudo"
+      tabIndex={-1}
+      className="flex flex-col items-center justify-center min-h-screen bg-naf-light p-4 outline-none"
+    > 
       <h1
         className={`text-3xl font-bold text-center mb-6 text-naf-blue transition-all duration-[700ms] ease-out delay-[100ms]
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}
@@ -87,19 +91,23 @@ export default function Cadastro() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
-            <label className="block mb-1 text-sm font-medium text-naf-blue">
+            <label htmlFor="cadastro-nome" className="block mb-1 text-sm font-medium text-naf-blue">
               Nome Completo
             </label>
             <input
+              id="cadastro-nome"
+              autoComplete="name"
               type="text"
               placeholder="Digite seu nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              aria-invalid={errors.name ? "true" : undefined}
+              aria-describedby={errors.name ? "erro-nome" : undefined}
               className="w-full px-4 py-2 border border-naf-gray rounded-xl focus:ring-2 focus:ring-naf-red focus:border-transparent outline-none transition delay-[80ms] duration-[400ms] ease-in-out hover:shadow-sm"
             />
-            {errors.name && (
-              <p className="mt-1 text-xs text-naf-red font-medium">{errors.name}</p>
-            )}
+            <p id="erro-nome" role="alert" className="mt-1 text-xs text-naf-red-dark font-medium">
+              {errors.name}
+            </p>
           </div>
 
           <div
@@ -107,19 +115,23 @@ export default function Cadastro() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
-            <label className="block mb-1 text-sm font-medium text-naf-blue">
+            <label htmlFor="cadastro-email" className="block mb-1 text-sm font-medium text-naf-blue">
               Email
             </label>
             <input
+              id="cadastro-email"
+              autoComplete="email"
               type="email"
               placeholder="Digite seu email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              aria-invalid={errors.email ? "true" : undefined}
+              aria-describedby={errors.email ? "erro-email" : undefined}
               className="w-full px-4 py-2 border border-naf-gray rounded-xl focus:ring-2 focus:ring-naf-red focus:border-transparent outline-none transition delay-[80ms] duration-[400ms] ease-in-out hover:shadow-sm"
             />
-            {errors.email && (
-              <p className="mt-1 text-xs text-naf-red font-medium">{errors.email}</p>
-            )}
+            <p id="erro-email" role="alert" className="mt-1 text-xs text-naf-red-dark font-medium">
+              {errors.email}
+            </p>
           </div>
 
           <div
@@ -127,19 +139,23 @@ export default function Cadastro() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
-            <label className="block mb-1 text-sm font-medium text-naf-blue">
+            <label htmlFor="cadastro-senha" className="block mb-1 text-sm font-medium text-naf-blue">
               Senha
             </label>
             <input
+              id="cadastro-senha"
+              autoComplete="new-password"
               type="password"
               placeholder="Crie uma senha segura"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              aria-invalid={errors.password ? "true" : undefined}
+              aria-describedby={errors.password ? "erro-senha" : undefined}
               className="w-full px-4 py-2 border border-naf-gray rounded-xl focus:ring-2 focus:ring-naf-red focus:border-transparent outline-none transition delay-[80ms] duration-[400ms] ease-in-out hover:shadow-sm"
             />
-            {errors.password && (
-              <p className="mt-1 text-xs text-naf-red font-medium">{errors.password}</p>
-            )}
+            <p id="erro-senha" role="alert" className="mt-1 text-xs text-naf-red-dark font-medium">
+              {errors.password}
+            </p>
           </div>
 
           <div
@@ -147,21 +163,23 @@ export default function Cadastro() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
-            <label className="block mb-1 text-sm font-medium text-naf-blue">
+            <label htmlFor="cadastro-confirmar" className="block mb-1 text-sm font-medium text-naf-blue">
               Confirmar Senha
             </label>
             <input
+              id="cadastro-confirmar"
+              autoComplete="new-password"
               type="password"
               placeholder="Repita a senha"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              aria-invalid={errors.confirmPassword ? "true" : undefined}
+              aria-describedby={errors.confirmPassword ? "erro-confirmar" : undefined}
               className="w-full px-4 py-2 border border-naf-gray rounded-xl focus:ring-2 focus:ring-naf-red focus:border-transparent outline-none transition delay-[80ms] duration-[400ms] ease-in-out hover:shadow-sm"
             />
-            {errors.confirmPassword && (
-              <p className="mt-1 text-xs text-naf-red font-medium">
-                {errors.confirmPassword}
-              </p>
-            )}
+            <p id="erro-confirmar" role="alert" className="mt-1 text-xs text-naf-red-dark font-medium">
+              {errors.confirmPassword}
+            </p>
           </div>
 
           <div
@@ -192,6 +210,6 @@ export default function Cadastro() {
           </button>
         </p>
       </div>
-    </div>
+    </main>
   );
 }

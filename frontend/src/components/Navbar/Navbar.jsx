@@ -1,5 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; 
+
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -15,58 +16,55 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           
-          <div 
-            onClick={() => navigate('/Home')}
+          <Link 
+            to="/Home"
             className="flex-shrink-0 text-xl font-bold text-white tracking-wide cursor-pointer hover:text-naf-gray transition-colors duration-300"
             title="Voltar para a Página Inicial"
           >
             Calculadora Tributária
-          </div>
+          </Link>
 
           <div className="flex items-center">
             <div className="flex items-center space-x-1">
-              <button
-                onClick={() => navigate('/Home')}
-                className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap"
-              >
+              <Link to="/Home" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
                 Página Inicial
-              </button>
+              </Link>
 
               <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
 
-              <button
-                onClick={() => navigate('/calculo-pf')}
-                className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap"
-              >
+              <Link to="/calculo-pf" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
                 Cálculo PF
-              </button>
+              </Link>
 
               <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
 
-              <button
-                onClick={() => navigate('/calculo-pj')}
-                className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap"
-              >
+              <Link to="/calculo-pj" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
                 Cálculo PJ
-              </button>
+              </Link>
 
               <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
 
-              <button
-                onClick={() => navigate('/comparativo')}
-                className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap"
-              >
+              <Link to="/comparativo" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
                 Comparativo
-              </button>
+              </Link>
 
               <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
 
-              <button
-                onClick={() => navigate('/historico')}
-                className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap"
-              >
+              <Link to="/historico" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
                 Histórico
-              </button>
+              </Link>
+
+              <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
+
+              <Link to="/faq" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
+                FAQ
+              </Link>
+
+              <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
+
+              <Link to="/sobre" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
+                Sobre
+              </Link>
             </div>
 
             <button

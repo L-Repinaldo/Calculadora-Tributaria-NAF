@@ -1,17 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
-import RecuperarSenha from "./pages/RecuperarSenha";
-import Home from "./pages/Home";
-import CalculoPF from "./components/Calculos/CalculoPF";
-import CalculoPJ from "./components/Calculos/CalculoPJ";
-import Comparativo from "./pages/Comparativo";
-import Historico from "./pages/Historico";
+import Landing from "./Pages/Landing";
+import Login from "./Pages/Login";
+import Cadastro from "./Pages/Cadastro";
+import RecuperarSenha from "./Pages/RecuperarSenha";
+import Home from "./Pages/Home";
+import CalculoPF from "./Pages/CalculoPF";
+import CalculoPJ from "./Pages/CalculoPJ";
+import Comparativo from "./Pages/Comparativo";
+import Historico from "./Pages/Historico";
+import Navbar from "./components/Navbar";
+import Faq from "./Pages/Faq";
+import Sobre from "./Pages/Sobre";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
@@ -22,6 +27,9 @@ function App() {
         <Route path="/calculo-pj" element={<CalculoPJ />} />
         <Route path="/comparativo" element={<Comparativo />} />
         <Route path="/historico" element={<Historico />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

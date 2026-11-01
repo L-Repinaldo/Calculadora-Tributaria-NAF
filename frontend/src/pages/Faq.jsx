@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 
 export default function Faq() {
   const faqs = [
@@ -36,7 +35,6 @@ export default function Faq() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

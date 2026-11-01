@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
@@ -129,7 +128,6 @@ export default function Historico() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

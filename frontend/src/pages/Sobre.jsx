@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Footer from "../components/Footer";
 
 export default function Sobre() {
   const [formData, setFormData] = useState({ nome: "", email: "", mensagem: "" });
@@ -65,7 +64,6 @@ export default function Sobre() {
 
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

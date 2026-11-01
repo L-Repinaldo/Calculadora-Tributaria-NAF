@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import html2pdf from "html2pdf.js";
 import api from "../services/api";
@@ -381,7 +380,6 @@ export default function Comparativo() {
       </div>
     </main>
 
-    <Footer />
   </div>
 );
 }

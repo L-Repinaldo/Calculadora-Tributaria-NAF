@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer/Footer";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -49,9 +48,7 @@ export default function Landing() {
     <div className="flex flex-col min-h-screen bg-naf-light">
       <nav className="w-full bg-naf-blue shadow-md py-4">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          <div className="text-xl font-bold text-white tracking-wide cursor-default">
-            Calculadora Tributária
-          </div>
+          
           <div className="flex gap-4">
             <button 
               onClick={() => navigate("/login")}
@@ -133,7 +130,6 @@ export default function Landing() {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 }

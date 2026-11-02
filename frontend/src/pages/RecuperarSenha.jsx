@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function RecuperarSenha() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,8 +41,11 @@ export default function RecuperarSenha() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-naf-light p-4">
-      <h1
+    <main
+      id="conteudo"
+      tabIndex={-1}
+      className="flex flex-col items-center justify-center min-h-screen bg-naf-light p-4 outline-none"
+    >      <h1
         className={`text-3xl font-bold text-center mb-6 text-naf-blue transition-all duration-[700ms] ease-out delay-[100ms]
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}
       >
@@ -60,7 +64,7 @@ export default function RecuperarSenha() {
         </h2>
 
         <p
-          className={`text-center text-sm text-naf-gray mb-6 transition-all duration-[700ms] ease-out delay-[300ms]
+          className={`text-center text-sm text-naf-muted mb-6 transition-all duration-[700ms] ease-out delay-[300ms]
             ${isVisible ? "opacity-100" : "opacity-0"}`}
         >
           Informe seu email e enviaremos as instruções para redefinir sua senha de acesso.
@@ -71,10 +75,12 @@ export default function RecuperarSenha() {
             className={`transition-all duration-[700ms] ease-out delay-[400ms]
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
           >
-            <label className="block mb-2 text-sm font-medium text-naf-blue">
+            <label htmlFor="recuperar-email" className="block mb-2 text-sm font-medium text-naf-blue">
               Email Cadastrado
             </label>
             <input
+              id="recuperar-email"
+              autoComplete="email"
               type="email"
               placeholder="Digite seu email"
               value={email}
@@ -82,9 +88,13 @@ export default function RecuperarSenha() {
                 setEmail(e.target.value);
                 if (error) setError("");
               }}
+              aria-invalid={error ? "true" : undefined}
+              aria-describedby={error ? "erro-email" : undefined}
               className="w-full px-4 py-2 border border-naf-gray rounded-xl focus:ring-2 focus:ring-naf-red focus:border-transparent outline-none transition delay-[80ms] duration-[400ms] ease-in-out hover:shadow-sm"
             />
-            {error && <p className="mt-1 text-sm text-naf-red font-medium">{error}</p>}
+            <p id="erro-email" role="alert" className="mt-1 text-sm text-naf-red-dark font-medium">
+              {error}
+            </p>
           </div>
 
           <div
@@ -101,18 +111,15 @@ export default function RecuperarSenha() {
         </form>
 
         <p
-          className={`text-center text-sm text-naf-gray mt-6 transition-all duration-[700ms] ease-out delay-[600ms]
+          className={`text-center text-sm text-naf-muted mt-6 transition-all duration-[700ms] ease-out delay-[600ms]
             ${isVisible ? "opacity-100" : "opacity-0"}`}
         >
           Lembrou sua senha?{" "}
-          <button
-            onClick={() => navigate("/login")}
-            className="text-naf-red hover:underline font-bold bg-transparent border-none p-0 cursor-pointer"
-          >
+          <Link to="/login" className="text-naf-red-dark underline font-bold">
             Faça login
-          </button>
+          </Link>
         </p>
       </div>
-    </div>
+    </main>
   );
 }

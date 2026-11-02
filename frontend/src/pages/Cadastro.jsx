@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 
 export default function Cadastro() {
@@ -9,6 +9,7 @@ export default function Cadastro() {
   const [isVisible, setIsVisible] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [erroGeral, setErroGeral] = useState("");
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -32,6 +33,7 @@ export default function Cadastro() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErroGeral("");
     const formErrors = validateForm();
 
     if (Object.keys(formErrors).length > 0) {
@@ -48,7 +50,7 @@ export default function Cadastro() {
 
     } catch (error) {
       const mensagemErro = error.response?.data?.error || "Erro ao conectar com o servidor.";
-      alert(mensagemErro);
+      setErroGeral(mensagemErro);
     }
   };
 
@@ -65,7 +67,7 @@ export default function Cadastro() {
       id="conteudo"
       tabIndex={-1}
       className="flex flex-col items-center justify-center min-h-screen bg-naf-light p-4 outline-none"
-    > 
+    >
       <h1
         className={`text-3xl font-bold text-center mb-6 text-naf-blue transition-all duration-[700ms] ease-out delay-[100ms]
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}
@@ -84,6 +86,12 @@ export default function Cadastro() {
         >
           Criar Conta
         </h2>
+
+        <div role="alert">
+          {erroGeral && (
+            <p className="mb-4 text-sm font-medium text-naf-red-dark">{erroGeral}</p>
+          )}
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <div
@@ -197,17 +205,14 @@ export default function Cadastro() {
         </form>
 
         <p
-          className={`text-center text-sm text-naf-gray mt-6 transition-all duration-[700ms] ease-out delay-[800ms] ${
+          className={`text-center text-sm text-naf-muted mt-6 transition-all duration-[700ms] ease-out delay-[800ms] ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
         >
           Já tem conta?{" "}
-          <button
-            onClick={() => navigate("/login")}
-            className="text-naf-red hover:underline font-bold bg-transparent border-none p-0 cursor-pointer"
-          >
+          <Link to="/login" className="text-naf-red-dark underline font-bold">
             Faça login
-          </button>
+          </Link>
         </p>
       </div>
     </main>

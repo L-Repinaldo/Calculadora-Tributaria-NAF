@@ -47,7 +47,7 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(response.data.user));
 
       alert("Login realizado com sucesso!");
-      navigate("/Home");
+      navigate("/home");
 
     } catch (error) {
       const mensagemErro = error.response?.data?.error || "Erro ao conectar ao servidor.";
@@ -174,7 +174,7 @@ export default function Login() {
           }`}
         >
           Esqueceu a senha?{" "}
-          <Link to="/RecuperarSenha" className="text-naf-red-dark underline font-bold">
+          <Link to="/recuperar-senha" className="text-naf-red-dark underline font-bold">
             Recuperar Senha
           </Link>
         </p>

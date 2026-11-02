@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -64,7 +62,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-naf-light">
-      <Navbar />
 
       <main className="flex-grow flex flex-col items-center py-10 px-4 md:px-6">
         
@@ -258,7 +255,6 @@ export default function Home() {
 
       </main>
 
-      <Footer />
     </div>
   );
 }

@@ -5,7 +5,6 @@ export default function RecuperarSenha() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  
   const navigate = useNavigate();
 
   useEffect(() => {

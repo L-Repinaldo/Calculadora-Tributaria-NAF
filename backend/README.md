@@ -37,5 +37,5 @@ cd backend
   ```
 5. Inicie o servidor em modo de desenvolvimento:
   ```bash
-  npm run dev
+  npm start
   ```

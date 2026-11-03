@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
-  const navigate = useNavigate();
   const [faqAberto, setFaqAberto] = useState(null);
 
   const faqs = [
@@ -37,99 +36,91 @@ export default function Landing() {
   ];
 
   const toggleFaq = (index) => {
-    if (faqAberto === index) {
-      setFaqAberto(null);
-    } else {
-      setFaqAberto(index);
-    }
+    setFaqAberto(faqAberto === index ? null : index);
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-naf-light">
-      <nav className="w-full bg-naf-blue shadow-md py-4">
-        <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          
-          <div className="flex gap-4">
-            <button 
-              onClick={() => navigate("/login")}
-              className="text-white font-medium hover:text-naf-red transition cursor-pointer"
-            >
-              Entrar
-            </button>
-            <button 
-              onClick={() => navigate("/cadastro")}
-              className="bg-naf-red text-white px-5 py-2 rounded-lg font-bold hover:bg-[#a62b18] transition shadow-md hover:scale-105 cursor-pointer"
-            >
-              Criar Conta
-            </button>
-          </div>
-        </div>
-      </nav>
+      {/* NAVBAR REMOVIDA - já existe no App.jsx */}
 
-      <main className="flex-grow">
+      <main id="conteudo" tabIndex={-1} className="flex-grow outline-none">
+        {/* HERO SECTION */}
         <section className="w-full py-20 px-6 text-center bg-gradient-to-b from-naf-blue to-[#0c1825] text-white">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
               Pare de perder dinheiro para o Leão. <br />
               <span className="text-naf-red">Simule seus impostos em segundos.</span>
             </h1>
-            <p className="text-lg md:text-xl text-naf-gray mb-10 max-w-2xl mx-auto">
+            {/* CORREÇÃO: text-gray-300 em vez de text-gray-600 para contraste sobre fundo escuro */}
+            <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
               Nossa calculadora inteligente ajuda profissionais autônomos a compararem os encargos entre Pessoa Física e Pessoa Jurídica para tomar a melhor decisão financeira.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button 
-                onClick={() => navigate("/login")}
-                className="bg-naf-red text-white text-lg font-bold px-8 py-4 rounded-xl hover:bg-[#a62b18] transition shadow-lg hover:scale-105 cursor-pointer"
+              <Link
+                to="/login"
+                className="bg-naf-red text-white text-lg font-bold px-8 py-4 rounded-xl hover:bg-[#a62b18] transition shadow-lg hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-naf-red min-h-[44px] flex items-center justify-center"
               >
                 Acessar Calculadora
-              </button>
-              <button 
-                onClick={() => document.getElementById('faq-section').scrollIntoView({ behavior: 'smooth' })}
-                className="bg-transparent border-2 border-naf-gray text-white text-lg font-bold px-8 py-4 rounded-xl hover:border-white transition cursor-pointer"
+              </Link>
+              <a
+                href="#faq-section"
+                className="bg-transparent border-2 border-naf-gray text-white text-lg font-bold px-8 py-4 rounded-xl hover:border-white transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white min-h-[44px] flex items-center justify-center"
               >
                 Como funciona?
-              </button>
+              </a>
             </div>
           </div>
         </section>
 
-        {/* FAQ */}
+        {/* FAQ SECTION */}
         <section id="faq-section" className="w-full py-20 px-6 bg-naf-light">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-naf-blue mb-2">Dúvidas Frequentes (FAQ)</h2>
-            <p className="text-center text-naf-gray mb-10 font-medium">Entenda como a nossa ferramenta pode ajudar na sua rotina</p>
+            <p className="text-center text-naf-muted mb-10 font-medium">Entenda como a nossa ferramenta pode ajudar na sua rotina</p>
 
             <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white border border-naf-gray/20 rounded-2xl shadow-sm overflow-hidden transition-all duration-300"
-                >
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition cursor-pointer"
-                  >
-                    <span className="font-bold text-naf-blue text-lg">{faq.pergunta}</span>
-                    <svg 
-                      className={`w-6 h-6 text-naf-red transform transition-transform duration-300 ${faqAberto === index ? 'rotate-180' : ''}`} 
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              {faqs.map((faq, index) => {
+                const aberto = faqAberto === index;
+                return (
+                  <div key={index} className="bg-white border border-naf-gray/20 rounded-2xl shadow-sm overflow-hidden">
+                    <h3>
+                      <button
+                        type="button"
+                        id={`faq-botao-${index}`}
+                        aria-expanded={aberto}
+                        aria-controls={`faq-painel-${index}`}
+                        onClick={() => toggleFaq(index)}
+                        className="w-full flex justify-between items-center gap-4 p-6 text-left hover:bg-gray-50 transition cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-naf-blue min-h-[44px]"
+                      >
+                        <span className="font-bold text-naf-blue text-lg">{faq.pergunta}</span>
+                        <svg
+                          aria-hidden="true"
+                          className={`w-6 h-6 shrink-0 text-naf-red transform transition-transform duration-300 ${aberto ? "rotate-180" : ""}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </h3>
+
+                    <div
+                      id={`faq-painel-${index}`}
+                      aria-hidden={!aberto}
+                      className={`grid transition-all duration-300 ease-in-out ${aberto ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  
-                  <div 
-                    className={`px-6 text-gray-700 text-sm md:text-base leading-relaxed overflow-hidden transition-all duration-300 ease-in-out ${faqAberto === index ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
-                  >
-                    {faq.resposta}
+                      <div className="overflow-hidden">
+                        <p className="px-6 pb-6 text-gray-700 text-sm md:text-base leading-relaxed">{faq.resposta}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
       </main>
-
     </div>
   );
 }

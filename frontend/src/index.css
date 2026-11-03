@@ -5,4 +5,23 @@
   --color-naf-blue: #132436;
   --color-naf-gray: #B2B2B2;
   --color-naf-light: #EFEFEF;
+  --color-naf-red-dark: #B52E18;   /* texto vermelho sobre fundo claro */
+  --color-naf-muted: #595959;      /* texto secundário sobre fundo claro */
+  --color-naf-focus: #3B82F6;      /* cor do anel de foco */
+}
+
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--color-naf-focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }

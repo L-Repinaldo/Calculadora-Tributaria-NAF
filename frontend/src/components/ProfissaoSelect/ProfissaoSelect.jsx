@@ -10,7 +10,7 @@ function ProfissaoSelect({ value, onChange }) {
         id="profissao"
         value={value}
         onChange={onChange}
-        className="w-full border border-naf-gray px-4 py-2 rounded-xl focus:ring-2 focus:ring-naf-red outline-none transition delay-[80ms] duration-[400ms] ease-in-out"
+        className="w-full border border-naf-gray px-4 py-2 rounded-xl focus-visible:ring-2 focus-visible:ring-naf-blue focus:border-transparent transition bg-white"
       >
         {PROFISSOES.map((prof) => (
           <option key={prof.id} value={prof.id}>

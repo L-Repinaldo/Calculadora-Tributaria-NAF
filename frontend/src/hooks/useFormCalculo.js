@@ -3,7 +3,6 @@ import api from '../services/api';
 import { calcularFaixaIRPF } from '../utils/calculos';
 import { RENDA_MAXIMA } from '../constants/profissoes';
 
-
 export function useFormCalculo() {
   const [renda, setRenda] = useState('');
   const [custos, setCustos] = useState('');
@@ -16,8 +15,8 @@ export function useFormCalculo() {
   const handleRendaChange = (e) => {
     const valor = parseFloat(e.target.value);
     if (valor > RENDA_MAXIMA) {
-      setErro(`O valor máximo permitido é ${REnda_MAXIMA.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`);
-      setRenda(REnda_MAXIMA);
+      setErro(`O valor máximo permitido é ${RENDA_MAXIMA.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`);
+      setRenda(RENDA_MAXIMA);
     } else {
       setErro('');
       setRenda(e.target.value);
@@ -29,7 +28,8 @@ export function useFormCalculo() {
     const custosNum = parseFloat(custos);
 
     if (isNaN(rendaNum) || isNaN(custosNum)) {
-      setResultado('Por favor, insira valores válidos.');
+      setErro('Por favor, insira valores válidos.');
+      setResultado(null);
       return;
     }
 
@@ -42,6 +42,7 @@ export function useFormCalculo() {
 
     setLoading(true);
     setErro('');
+    setResultado(null);
 
     try {
       const payload = {
@@ -71,7 +72,7 @@ export function useFormCalculo() {
     } catch (error) {
       console.error(`Erro ao salvar cálculo ${tipo}:`, error);
       const msg = error.response?.data?.error || 'Erro ao processar cálculo no servidor.';
-      setResultado(msg);
+      setErro(msg);
     } finally {
       setLoading(false);
     }

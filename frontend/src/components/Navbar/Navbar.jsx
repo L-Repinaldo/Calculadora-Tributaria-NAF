@@ -34,17 +34,6 @@ export default function Navbar() {
 
           <div className="flex items-center">
             <div className="flex items-center space-x-1">
-              
-              {/* --- LINKS PÚBLICOS (Sempre visíveis) --- */}
-              <Link to="/faq" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
-                FAQ
-              </Link>
-
-              <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
-
-              <Link to="/sobre" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
-                Sobre
-              </Link>
 
               {/* --- LINKS PRIVADOS (Só aparecem se logado) --- */}
               {isAuthenticated && (
@@ -80,6 +69,22 @@ export default function Navbar() {
                   </Link>
                 </>
               )}
+
+              {/* --- LINKS PÚBLICOS (Sempre visíveis) --- */}
+              <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
+
+              <Link to="/faq" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
+                FAQ
+              </Link>
+
+              <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
+
+              <Link to="/sobre" className="px-2.5 py-2 rounded-lg text-sm font-medium text-naf-light hover:bg-naf-red hover:text-white transition-all duration-300 whitespace-nowrap">
+                Sobre
+              </Link>
+
+              <div className="h-5 w-px bg-naf-gray/50 opacity-40 mx-0.5" />
+
             </div>
 
             {/* --- BOTÕES CONDICIONAIS DE AÇÃO --- */}

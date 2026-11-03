@@ -46,26 +46,7 @@ export default function Landing() {
 
   return (
     <div className="flex flex-col min-h-screen bg-naf-light">
-      <nav className="w-full bg-naf-blue shadow-md py-4">
-        <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          
-          <div className="flex gap-4">
-            <button 
-              onClick={() => navigate("/login")}
-              className="text-white font-medium hover:text-naf-red transition cursor-pointer"
-            >
-              Entrar
-            </button>
-            <button 
-              onClick={() => navigate("/cadastro")}
-              className="bg-naf-red text-white px-5 py-2 rounded-lg font-bold hover:bg-[#a62b18] transition shadow-md hover:scale-105 cursor-pointer"
-            >
-              Criar Conta
-            </button>
-          </div>
-        </div>
-      </nav>
-
+    
       <main className="flex-grow">
         <section className="w-full py-20 px-6 text-center bg-gradient-to-b from-naf-blue to-[#0c1825] text-white">
           <div className="max-w-4xl mx-auto">

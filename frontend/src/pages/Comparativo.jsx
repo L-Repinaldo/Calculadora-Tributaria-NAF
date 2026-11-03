@@ -128,7 +128,8 @@ export default function Comparativo() {
   };
 
   const formatarMoeda = (valor) => Number(valor ?? 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-  const nomesProfissoes = { psicologo: "Psicólogo(a)", arquiteto: "Arquiteto(a)", advogado: "Advogado(a)" };
+  const nomesProfissoes = { psicologo: "Psicólogo(a)", arquiteto: "Arquiteto(a)", advogado: "Advogado(a)", medico: "Médico(a)", dentista: "Dentista" };
+
 
   return (
     <div className="flex flex-col min-h-screen bg-naf-light">
@@ -148,6 +149,8 @@ export default function Comparativo() {
                 <option value="psicologo">Psicólogo(a)</option>
                 <option value="arquiteto">Arquiteto(a)</option>
                 <option value="advogado">Advogado(a)</option>
+                <option value="medico">Médico(a)</option>
+                <option value="dentista">Dentista</option>
               </select>
             </div>
 

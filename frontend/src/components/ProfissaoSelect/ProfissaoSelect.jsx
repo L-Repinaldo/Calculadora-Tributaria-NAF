@@ -1,6 +1,6 @@
-import { PROFISSOES } from '../constants/profissoes';
+import { PROFISSOES } from '../../constants/profissoes';
 
-function ProfissaoSelect({ value, onChange }) {
+export default function ProfissaoSelect({ value, onChange }) {
   return (
     <div>
       <label htmlFor="profissao" className="block mb-1 text-sm font-medium text-naf-blue">
@@ -21,5 +21,3 @@ function ProfissaoSelect({ value, onChange }) {
     </div>
   );
 }
-
-export default ProfissaoSelect;
